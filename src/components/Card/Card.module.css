@@ -1,0 +1,47 @@
+.card {
+  display: flex;
+  margin: 0;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card img {
+  max-width: 50%;
+  max-height: 200px;
+}
+
+.card figcaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 10px;
+}
+
+.card .title {
+  color: black;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.card .channelTitle {
+  font-size: 20px;
+  color: lightgray;
+}
+
+@media screen and (max-width: 480px) {
+  .card img {
+    margin-right: 10px;
+  }
+
+  .card .title {
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .card .channelTitle {
+    font-size: 10px;
+    color: lightgray;
+  }
+}

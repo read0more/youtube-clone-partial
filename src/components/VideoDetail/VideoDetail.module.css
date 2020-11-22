@@ -1,0 +1,32 @@
+.section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.article {
+  margin-right: 20px;
+}
+
+.aside {
+  display: grid;
+  gap: 10px;
+}
+
+@media screen and (max-width: 960px) {
+  .section {
+    grid-template-columns: none;
+  }
+
+  .article {
+    margin-right: 0;
+  }
+
+  .aside {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 480px) {
+  .aside {
+    grid-template-columns: none;
+  }
+}
