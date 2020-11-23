@@ -29,7 +29,7 @@
   color: lightgray;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 720px) {
   .card img {
     margin-right: 10px;
   }
