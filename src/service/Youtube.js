@@ -7,10 +7,6 @@ class Youtube {
   constructor(key) {
     this.htmlEntities = new Html5Entities();
     this.key = key;
-    this.getRequestOptions = {
-      method: "GET",
-      // redirect: "follow",
-    };
   }
 
   getExtractIdFromVideo(video) {
