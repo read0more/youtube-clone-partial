@@ -7,7 +7,6 @@ import { getMostPopularVideos, getVideosByTerm } from "./api/youtubeApi";
 import { getHtmlEntitiesDecodeVideos } from "./utils";
 
 function App() {
-  const [term, setTerm] = useState("");
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setselectedVideo] = useState(null);
 
@@ -22,7 +21,6 @@ function App() {
   const handleSearch = async (term) => {
     setVideos([]);
     handleBackHome();
-    setTerm(term);
     const { items } = await getVideosByTerm(term);
     setVideos(getHtmlEntitiesDecodeVideos(items));
   };

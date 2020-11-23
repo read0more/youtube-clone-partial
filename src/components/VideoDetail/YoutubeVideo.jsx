@@ -16,7 +16,7 @@ const YoutubeVideo = ({ video }) => {
       ></iframe>
       <b className={style.title}>{video.snippet.title}</b>
       <b className={style.channelTitle}>{video.snippet.channelTitle}</b>
-      <p className={style.description}>{video.snippet.description}</p>
+      <pre className={style.description}>{video.snippet.description}</pre>
     </div>
   );
 };
