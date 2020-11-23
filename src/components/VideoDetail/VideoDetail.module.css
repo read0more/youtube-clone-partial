@@ -7,7 +7,7 @@
   margin-right: 20px;
 }
 
-.aside {
+.related-videos {
   display: grid;
   gap: 10px;
 }
@@ -21,12 +21,12 @@
     margin-right: 0;
   }
 
-  .aside {
+  .related-videos {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (max-width: 720px) {
-  .aside {
+  .related-videos {
     grid-template-columns: none;
   }
 }

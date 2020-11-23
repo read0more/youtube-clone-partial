@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Card from "../Card/Card";
+import VideoItem from "../VideoItem/VideoItem";
 import styles from "./VideoDetail.module.css";
 import YoutubeVideo from "./YoutubeVideo";
 import { getRelatedVideosById } from "../../api/youtubeApi";
@@ -25,14 +25,16 @@ const VideoDetail = ({ video, handleSelectVideo }) => {
       <article className={styles.article}>
         <YoutubeVideo video={video} />
       </article>
-      <aside className={styles.aside}>
-        {relatedVideos?.map?.((relatedVideo) => (
-          <Card
-            key={getYoutubeIdFromVideo(relatedVideo)}
-            video={relatedVideo}
-            handleSelectVideo={handleSelectVideo}
-          />
-        ))}
+      <aside>
+        <ul className={styles["related-videos"]}>
+          {relatedVideos?.map?.((relatedVideo) => (
+            <VideoItem
+              key={getYoutubeIdFromVideo(relatedVideo)}
+              video={relatedVideo}
+              handleSelectVideo={handleSelectVideo}
+            />
+          ))}
+        </ul>
       </aside>
     </section>
   ) : (

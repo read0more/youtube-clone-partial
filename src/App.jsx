@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import Header from "./components/Header/Header";
-import SearchList from "./components/SearchList/SearchList";
+import SearchResults from "./components/SearchResults/SearchResults";
 import VideoDetail from "./components/VideoDetail/VideoDetail";
 import { getMostPopularVideos, getVideosByTerm } from "./api/youtubeApi";
 import { getHtmlEntitiesDecodeVideos } from "./utils";
@@ -42,7 +42,7 @@ function App() {
           handleSelectVideo={handleSelectVideo}
         />
       ) : (
-        <SearchList videos={videos} handleSelectVideo={handleSelectVideo} />
+        <SearchResults videos={videos} handleSelectVideo={handleSelectVideo} />
       )}
     </main>
   );

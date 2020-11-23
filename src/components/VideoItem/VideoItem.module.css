@@ -1,4 +1,4 @@
-.card {
+.video-item {
   display: flex;
   margin: 0;
   background-color: white;
@@ -6,41 +6,41 @@
   cursor: pointer;
 }
 
-.card img {
+.video-item img {
   width: 50%;
   height: 100%;
 }
 
-.card figcaption {
+.video-item .metadata {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 10px;
 }
 
-.card .title {
+.video-item .title {
   color: black;
   font-size: 25px;
   font-weight: 500;
 }
 
-.card .channelTitle {
+.video-item .channelTitle {
   font-size: 20px;
   color: lightgray;
 }
 
 @media screen and (max-width: 720px) {
-  .card img {
+  .video-item img {
     margin-right: 10px;
   }
 
-  .card .title {
+  .video-item .title {
     color: black;
     font-size: 15px;
     font-weight: 500;
   }
 
-  .card .channelTitle {
+  .video-item .channelTitle {
     font-size: 10px;
     color: lightgray;
   }

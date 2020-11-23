@@ -14,7 +14,7 @@ const Header = memo(({ handleBackHome, handleSearch }) => {
           onClick={handleBackHome}
         />
       </a>
-      <span className={styles.title}>Youtube</span>
+      <h1 className={styles.title}>Youtube</h1>
       <SearchForm handleSearch={handleSearch} />
     </header>
   );

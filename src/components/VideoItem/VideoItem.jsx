@@ -1,25 +1,25 @@
 import React from "react";
-import styles from "./Card.module.css";
+import styles from "./VideoItem.module.css";
 
-const Card = ({ video, handleSelectVideo }) => {
+const VideoItem = ({ video, handleSelectVideo }) => {
   const onClick = () => {
     handleSelectVideo(video);
   };
 
   return (
-    <figure className={styles.card} onClick={onClick}>
+    <li className={styles["video-item"]} onClick={onClick}>
       <img
         src={video.snippet.thumbnails.medium.url}
         alt={video.snippet.title}
       />
-      <figcaption>
+      <div className={styles.metadata}>
         <span className={styles.title}>{video.snippet.title}</span>
         <span className={styles.channelTitle}>
           {video.snippet.channelTitle}
         </span>
-      </figcaption>
-    </figure>
+      </div>
+    </li>
   );
 };
 
-export default Card;
+export default VideoItem;

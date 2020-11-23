@@ -1,4 +1,4 @@
-.searchList {
+.SearchResults {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-top: 10px;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 720px) {
-  .searchList {
+  .SearchResults {
     grid-template-columns: none;
   }
 }
