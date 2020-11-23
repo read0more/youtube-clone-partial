@@ -3,32 +3,33 @@ import styles from "./App.module.css";
 import Header from "./components/Header/Header";
 import SearchResults from "./components/SearchResults/SearchResults";
 import VideoDetail from "./components/VideoDetail/VideoDetail";
-import { getMostPopularVideos, getVideosByTerm } from "./api/youtubeApi";
-import { getHtmlEntitiesDecodeVideos } from "./utils";
 
-function App() {
+function App({ youtube }) {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setselectedVideo] = useState(null);
 
   useEffect(() => {
     (async () => {
-      const { items } = await getMostPopularVideos();
-      setVideos(getHtmlEntitiesDecodeVideos(items));
+      const { items } = await youtube.getMostPopularVideos();
+      setVideos(items);
     })();
-  }, []);
+  }, [youtube]);
 
   const handleBackHome = useCallback(() => {
     setselectedVideo(null);
   }, []);
 
-  const handleSearch = useCallback(() => {
-    (async (term) => {
-      setVideos([]);
-      handleBackHome();
-      const { items } = await getVideosByTerm(term);
-      setVideos(getHtmlEntitiesDecodeVideos(items));
-    })();
-  }, [handleBackHome]);
+  const handleSearch = useCallback(
+    (term) => {
+      (async () => {
+        setVideos([]);
+        handleBackHome();
+        const { items } = await youtube.getVideosByTerm(term);
+        setVideos(items);
+      })();
+    },
+    [handleBackHome, youtube]
+  );
 
   const handleSelectVideo = useCallback((video) => {
     setselectedVideo(video);
@@ -41,6 +42,7 @@ function App() {
         <VideoDetail
           video={selectedVideo}
           handleSelectVideo={handleSelectVideo}
+          youtube={youtube}
         />
       ) : (
         <SearchResults videos={videos} handleSelectVideo={handleSelectVideo} />

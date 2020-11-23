@@ -2,23 +2,17 @@ import React, { useEffect, useState } from "react";
 import VideoItem from "../VideoItem/VideoItem";
 import styles from "./VideoDetail.module.css";
 import YoutubeVideo from "./YoutubeVideo";
-import { getRelatedVideosById } from "../../api/youtubeApi";
 import Loader from "../Loader/Loader";
-import {
-  getYoutubeIdFromVideo,
-  getHtmlEntitiesDecodeVideos,
-} from "../../utils";
 
-const VideoDetail = ({ video, handleSelectVideo }) => {
+const VideoDetail = ({ video, handleSelectVideo, youtube }) => {
   const [relatedVideos, setRelatedVideos] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const id = getYoutubeIdFromVideo(video);
-      const { items } = await getRelatedVideosById(id);
-      setRelatedVideos(getHtmlEntitiesDecodeVideos(items));
+      const { items } = await youtube.getRelatedVideosById(video.id);
+      setRelatedVideos(items);
     })();
-  }, [video]);
+  }, [video, youtube]);
 
   return relatedVideos?.length ? (
     <section className={styles.section}>
@@ -29,7 +23,7 @@ const VideoDetail = ({ video, handleSelectVideo }) => {
         <ul className={styles["related-videos"]}>
           {relatedVideos?.map?.((relatedVideo) => (
             <VideoItem
-              key={getYoutubeIdFromVideo(relatedVideo)}
+              key={relatedVideo.id}
               video={relatedVideo}
               handleSelectVideo={handleSelectVideo}
               display="detail"
