@@ -3,6 +3,7 @@ import { getYoutubeIdFromVideo } from "../../utils";
 import style from "./YoutubeVideo.module.css";
 
 const YoutubeVideo = ({ video }) => {
+  console.log(video);
   const id = getYoutubeIdFromVideo(video);
   return (
     <div className={style["youtube-video"]}>

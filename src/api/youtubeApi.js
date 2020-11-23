@@ -1,6 +1,6 @@
 import request from "./request";
 
-const KEY = "AIzaSyAxNgduyWImNd4HCSX2nunB2YQmrZkKlTY";
+const KEY = "AIzaSyCGhqIKBYcbGsvxoXsXgBGPJseqqp4JKj4";
 const BASE_URL = "https://content-youtube.googleapis.com/youtube/v3";
 
 export const getVideosByTerm = async (term) =>

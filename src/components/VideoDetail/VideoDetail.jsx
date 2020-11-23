@@ -4,7 +4,10 @@ import styles from "./VideoDetail.module.css";
 import YoutubeVideo from "./YoutubeVideo";
 import { getRelatedVideosById } from "../../api/youtubeApi";
 import Loader from "../Loader/Loader";
-import { getYoutubeIdFromVideo } from "../../utils";
+import {
+  getYoutubeIdFromVideo,
+  getHtmlEntitiesDecodeVideos,
+} from "../../utils";
 
 const VideoDetail = ({ video, handleSelectVideo }) => {
   const [relatedVideos, setRelatedVideos] = useState([]);
@@ -13,7 +16,7 @@ const VideoDetail = ({ video, handleSelectVideo }) => {
     (async () => {
       const id = getYoutubeIdFromVideo(video);
       const { items } = await getRelatedVideosById(id);
-      setRelatedVideos(items);
+      setRelatedVideos(getHtmlEntitiesDecodeVideos(items));
     })();
   }, [video]);
 
