@@ -32,6 +32,7 @@ const VideoDetail = ({ video, handleSelectVideo }) => {
               key={getYoutubeIdFromVideo(relatedVideo)}
               video={relatedVideo}
               handleSelectVideo={handleSelectVideo}
+              display="detail"
             />
           ))}
         </ul>

@@ -1,13 +1,18 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./VideoItem.module.css";
 
-const VideoItem = ({ video, handleSelectVideo }) => {
+const VideoItem = memo(({ video, handleSelectVideo, display }) => {
+  const displayType =
+    display === "detail"
+      ? `${styles["video-item"]} ${styles["video-item--detail"]}`
+      : `${styles["video-item"]}`;
+
   const onClick = () => {
     handleSelectVideo(video);
   };
 
   return (
-    <li className={styles["video-item"]} onClick={onClick}>
+    <li className={displayType} onClick={onClick}>
       <img
         src={video.snippet.thumbnails.medium.url}
         alt={video.snippet.title}
@@ -20,6 +25,6 @@ const VideoItem = ({ video, handleSelectVideo }) => {
       </div>
     </li>
   );
-};
+});
 
 export default VideoItem;

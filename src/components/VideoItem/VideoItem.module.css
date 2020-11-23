@@ -34,6 +34,14 @@
   color: lightgray;
 }
 
+.video-item.video-item--detail .title {
+  font-size: 20px;
+}
+
+.video-item.video-item--detail .channelTitle {
+  font-size: 15px;
+}
+
 @media screen and (max-width: 720px) {
   .video-item img {
     margin-right: 10px;
