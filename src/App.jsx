@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import styles from "./App.module.css";
 import Header from "./components/Header/Header";
 import SearchResults from "./components/SearchResults/SearchResults";
@@ -13,25 +13,26 @@ function App() {
   useEffect(() => {
     (async () => {
       const { items } = await getMostPopularVideos();
-      console.log("초기", items);
       setVideos(getHtmlEntitiesDecodeVideos(items));
     })();
   }, []);
 
-  const handleSearch = async (term) => {
-    setVideos([]);
-    handleBackHome();
-    const { items } = await getVideosByTerm(term);
-    setVideos(getHtmlEntitiesDecodeVideos(items));
-  };
-
-  const handleBackHome = () => {
+  const handleBackHome = useCallback(() => {
     setselectedVideo(null);
-  };
+  }, []);
 
-  const handleSelectVideo = (video) => {
+  const handleSearch = useCallback(() => {
+    (async (term) => {
+      setVideos([]);
+      handleBackHome();
+      const { items } = await getVideosByTerm(term);
+      setVideos(getHtmlEntitiesDecodeVideos(items));
+    })();
+  }, [handleBackHome]);
+
+  const handleSelectVideo = useCallback((video) => {
     setselectedVideo(video);
-  };
+  }, []);
 
   return (
     <main className={styles.container}>
