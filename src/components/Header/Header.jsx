@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import React, { memo } from "react";
 import styles from "./Header.module.css";
 import SearchForm from "./SearchForm";
@@ -8,10 +6,11 @@ const Header = memo(({ handleBackHome, handleSearch }) => {
   return (
     <header className={styles.header}>
       <a href="/">
-        <FontAwesomeIcon
-          icon={faYoutube}
+        <img
           className={styles.logo}
           onClick={handleBackHome}
+          src="/images/logo.png"
+          alt="logo"
         />
       </a>
       <h1 className={styles.title}>Youtube</h1>
